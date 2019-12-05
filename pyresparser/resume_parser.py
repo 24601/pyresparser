@@ -1,6 +1,7 @@
 # Author: Omkar Pathak
 
 import os
+import json
 import multiprocessing as mp
 import io
 import spacy
@@ -12,7 +13,7 @@ from . import utils
 class ResumeParser(object):
 
     def __init__(self, resume, skills_file=None):
-        nlp = spacy.load('en_core_web_sm')
+        nlp = spacy.load('/var/task/en_core_web_sm')
         custom_nlp = spacy.load(os.path.dirname(os.path.abspath(__file__)))
         self.__skills_file = skills_file
         self.__matcher = Matcher(nlp.vocab)
@@ -142,4 +143,7 @@ if __name__ == '__main__':
 
     results = [p.get() for p in results]
 
-    pprint.pprint(results)
+    # pprint.pprint(results)
+
+    app_json = json.dumps(results)
+    print(app_json)
