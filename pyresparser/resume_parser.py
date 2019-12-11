@@ -18,7 +18,13 @@ class ResumeParser(object):
         skills_file=None,
         custom_regex=None
     ):
-        nlp = spacy.load('/var/task/en_core_web_sm')
+        nlp = ""
+        if os.environ.get("AWS_EXECUTION_ENV") is not None:
+            nlp = spacy.load('/var/task/en_core_web_sm')
+        else:
+            nlp = spacy.load('en_core_web_sm')
+
+        
         custom_nlp = spacy.load(os.path.dirname(os.path.abspath(__file__)))
         self.__skills_file = skills_file
         self.__custom_regex = custom_regex
