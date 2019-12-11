@@ -68,6 +68,7 @@ class ResumeParser(object):
         #       )
         entities = utils.extract_entity_sections_grad(self.__text_raw)
 
+        self.__details['raw_text'] = self.__text_raw
         # extract name
         try:
             self.__details['name'] = cust_ent['Name'][0]
