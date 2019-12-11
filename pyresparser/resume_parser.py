@@ -35,6 +35,7 @@ class ResumeParser(object):
             'company_names': None,
             'no_of_pages': None,
             'total_experience': None,
+            'raw_text': None,
         }
         self.__resume = resume
         if not isinstance(self.__resume, io.BytesIO):
